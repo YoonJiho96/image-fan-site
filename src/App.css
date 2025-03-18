@@ -13,6 +13,17 @@
   }
 }
 
+@media (min-width: 720px) {
+  .pd-lr {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+body {
+  background-color: #111111;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
