@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Filter from '../components/Filter/Filter';
 import ImageGallery from '../components/ImageGallery/ImageGallery';
+import './IllustrationPage.css';
 
 const IllustrationPage = () => {
   const [filters, setFilters] = useState({
