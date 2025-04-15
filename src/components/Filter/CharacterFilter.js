@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import teamsData from "./filter-char.json"; // JSON 파일 가져오기
-import "./Filter.css";
+import "./CharacterFilter.css";
 
 const CharacterFilter = ({ onFilterChange }) => {
   const [selectedTeams, setSelectedTeams] = useState({});

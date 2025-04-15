@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Filter from '../components/Filter/Filter';
+import CharacterFilter from '../components/Filter/CharacterFilter';
 import ImageGallery from '../components/ImageGallery/ImageGallery';
 import './IllustrationPage.css';
 
@@ -26,7 +26,7 @@ const IllustrationPage = () => {
 
   return (
     <div className="illustration-page">
-      <Filter filters={filters} onFilterChange={handleFilterChange} />
+      <CharacterFilter filters={filters} onFilterChange={handleFilterChange} />
       <ImageGallery images={images} />
     </div>
   );
