@@ -1,0 +1,43 @@
+.filter-select-container {
+  margin-bottom: 1rem;
+  padding: 10px;
+}
+
+.filter-select-label {
+  font-weight: bold;
+}
+
+/* react-select 커스텀 스타일 */
+.select__option {
+  background-color: #ddd;
+  color: black;
+}
+
+.select__option--is-focused {
+  background-color: white;
+}
+
+.select__option--is-selected {
+  background-color: #ddd;
+}
+
+.select__value-container {
+  flex-wrap: wrap;
+  max-height: 100%;
+  overflow-y: auto;
+  height: auto;
+  align-items: flex-start;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  min-height: 38px;
+}
+
+.select__multi-value {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.select__multi-value__label {
+  white-space: normal;
+  word-break: break-word;
+} 
