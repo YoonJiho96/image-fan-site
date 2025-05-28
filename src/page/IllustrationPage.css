@@ -1,4 +1,14 @@
 .illustration-page {
     display: flex;
-    background-color: aliceblue;
+    min-height: calc(100vh - 120px); /* 네비게이션 바와 푸터 높이를 제외한 높이 */
+    background-color: #111111;
+}
+
+.image-gallery {
+    flex: 1;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    align-content: start;
 }

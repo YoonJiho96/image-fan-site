@@ -1,0 +1,23 @@
+.side-panel {
+  display: flex;
+  flex-direction: column;
+  background-color: #333333;
+  width: 400px;
+  padding: 20px;
+  gap: 20px;
+}
+
+.side-panel-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.side-panel-title {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #444444;
+} 

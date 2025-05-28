@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import teamsData from "./filter-char.json"; // JSON 파일 가져오기
+import "./Filter.css";
 
 const CharacterFilter = ({ onFilterChange }) => {
   const [selectedTeams, setSelectedTeams] = useState({});
@@ -57,7 +58,11 @@ const CharacterFilter = ({ onFilterChange }) => {
             className={`team-button ${selectedTeams[team] ? "active" : ""}`}
             onClick={() => handleTeamSelect(team)}
             data-tooltip={team}
-            style={{ backgroundImage: `url(${teamsData[team].image})` }}
+            style={{
+              backgroundImage: `url(${process.env.PUBLIC_URL}${teamsData[team].image})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
           >
             {/* 팀 이미지 */}
           </button>
@@ -70,7 +75,11 @@ const CharacterFilter = ({ onFilterChange }) => {
                 className={`char-button ${selectedCharacters[char.name] ? "active" : ""}`}
                 onClick={() => handleCharacterSelect(char.name, team)}
                 data-tooltip={char.name}
-                style={{ backgroundImage: `url(${char.image})` }}
+                style={{
+                  backgroundImage: `url(${process.env.PUBLIC_URL}${char.image})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
               >
                 {/* 캐릭터 이미지 */}
               </button>

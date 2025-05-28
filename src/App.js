@@ -8,11 +8,15 @@ import './App.css';
 function App() {
   return (
     <Router>
-      <Navbar />
-      <Footer />
-      <Routes>
-        <Route path="/gallery" element={<IllustrationPage />} />
-      </Routes>
+      <div className="app-container">
+        <Navbar />
+        <main className="main-content">
+          <Routes>
+            <Route path="/gallery" element={<IllustrationPage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </Router>
   );
 }
