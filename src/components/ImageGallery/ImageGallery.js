@@ -2,10 +2,34 @@ import React, { useState, useEffect } from 'react';
 import './ImageGallery.css';
 import imageData from '../../assets/output.json';
 
+const ImageModal = ({ image, onClose }) => {
+  if (!image) return null;
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-content" onClick={e => e.stopPropagation()}>
+        <button className="modal-close" onClick={onClose}>×</button>
+        <img 
+          src={image.fullPath} 
+          alt={image.filename} 
+          className="modal-image"
+        />
+        <div className="modal-info">
+          <h3>{image.character}</h3>
+          <p>팀: {image.team}</p>
+          <p>테마: {image.theme}</p>
+          <p>타입: {image.type}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const ImageGallery = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [images, setImages] = useState([]);
   const [inputPage, setInputPage] = useState('');
+  const [selectedImage, setSelectedImage] = useState(null);
   const imagesPerPage = 12;
 
   useEffect(() => {
@@ -45,6 +69,14 @@ const ImageGallery = () => {
     if (pageNumber >= 1 && pageNumber <= totalPages) {
       handlePageChange(pageNumber);
     }
+  };
+
+  const handleImageClick = (image) => {
+    setSelectedImage(image);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedImage(null);
   };
 
   const renderPagination = () => {
@@ -123,7 +155,11 @@ const ImageGallery = () => {
     <div className="image-gallery-container">
       <div className="image-gallery">
         {currentImages.map((image) => (
-          <div key={image.id} className="image-card">
+          <div 
+            key={image.id} 
+            className="image-card"
+            onClick={() => handleImageClick(image)}
+          >
             <img 
               src={image.fullPath}
               alt={image.filename}
@@ -154,6 +190,13 @@ const ImageGallery = () => {
           </button>
         </form>
       </div>
+
+      {selectedImage && (
+        <ImageModal 
+          image={selectedImage} 
+          onClose={handleCloseModal} 
+        />
+      )}
     </div>
   );
 };
