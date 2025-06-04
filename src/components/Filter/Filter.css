@@ -9,6 +9,28 @@
   padding-bottom: 50px;
 }
 
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.reset-button {
+  background-color: #444;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.reset-button:hover {
+  background-color: #555;
+}
+
 .team-container {
   display: flex;
   align-items: center;
@@ -82,4 +104,13 @@
 .team-button:hover::after,
 .char-button:hover::after {
   opacity: 1;
+}
+
+/* 테마 필터 스타일 */
+.theme-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  background-color: #333333;
 }

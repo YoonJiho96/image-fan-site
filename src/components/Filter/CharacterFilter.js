@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, forwardRef, useImperativeHandle } from "react";
 import teamsData from "../../assets/filter-char.json"; // JSON 파일 가져오기
 import "./Filter.css";
 
-const CharacterFilter = ({ onFilterChange }) => {
+const CharacterFilter = forwardRef(({ onFilterChange }, ref) => {
   const [selectedTeams, setSelectedTeams] = useState({});
   const [selectedCharacters, setSelectedCharacters] = useState({});
 
-  useEffect(() => {
+  const initializeFilters = () => {
     const initialTeams = {};
     const initialCharacters = {};
     Object.keys(teamsData).forEach((team) => {
@@ -15,6 +15,14 @@ const CharacterFilter = ({ onFilterChange }) => {
     });
     setSelectedTeams(initialTeams);
     setSelectedCharacters(initialCharacters);
+  };
+
+  useImperativeHandle(ref, () => ({
+    initializeFilters
+  }));
+
+  useEffect(() => {
+    initializeFilters();
   }, []);
 
   const handleTeamSelect = (team) => {
@@ -51,6 +59,16 @@ const CharacterFilter = ({ onFilterChange }) => {
 
   return (
     <div className="char-filter">
+      <div className="filter-header">
+        <h2 className="side-panel-title">캐릭터</h2>
+        <button 
+          className="reset-button"
+          onClick={initializeFilters}
+          title="필터 초기화"
+        >
+          초기화
+        </button>
+      </div>
       {Object.keys(teamsData).map((team) => (
         <div key={team} className="team-container">
           {/* 팀 버튼 */}
@@ -89,6 +107,6 @@ const CharacterFilter = ({ onFilterChange }) => {
       ))}
     </div>
   );
-};
+});
 
 export default CharacterFilter;

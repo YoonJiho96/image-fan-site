@@ -1,13 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 import FilterSelectBox from './FilterSelectBox';
 import themeData from '../../assets/filter-theme.json';
 
-const ThemeFilter = ({ onFilterChange }) => {
+const ThemeFilter = forwardRef(({ onFilterChange }, ref) => {
   // 테마 필터
   const [illust, setIllust] = useState([]);
   const [swim, setSwim] = useState([]);
   const [rare, setRare] = useState([]);
   const [unique, setUnique] = useState([]);
+
+  const initializeFilters = () => {
+    setIllust([]);
+    setSwim([]);
+    setRare([]);
+    setUnique([]);
+  };
+
+  useImperativeHandle(ref, () => ({
+    initializeFilters
+  }));
 
   useEffect(() => {
     onFilterChange('themes', {
@@ -19,7 +30,17 @@ const ThemeFilter = ({ onFilterChange }) => {
   }, [illust, swim, rare, unique, onFilterChange]);
 
   return (
-    <div>
+    <div className="theme-filter">
+      <div className="filter-header">
+        <h2 className="side-panel-title">테마</h2>
+        <button 
+          className="reset-button"
+          onClick={initializeFilters}
+          title="필터 초기화"
+        >
+          초기화
+        </button>
+      </div>
       <FilterSelectBox
         label="일러스트 아바타"
         options={themeData.일러스트.options}
@@ -46,6 +67,6 @@ const ThemeFilter = ({ onFilterChange }) => {
       />
     </div>
   );
-};
+});
 
 export default ThemeFilter;
