@@ -30,7 +30,8 @@ const IllustrationPage = () => {
     // 캐릭터 필터링
     if (filters.characters.length > 0) {
       filtered = filtered.filter(image => 
-        filters.characters.includes(image.character)
+        filters.characters.includes(image.character) || 
+        filters.characters.includes(image.character_fullname)
       );
     }
 
