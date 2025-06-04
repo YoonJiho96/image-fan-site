@@ -43,6 +43,11 @@ const ImageGallery = ({ images }) => {
     if (pageNumber >= 1 && pageNumber <= totalPages) {
       setCurrentPage(pageNumber);
       setInputPage('');
+      // 페이지 변경 시 상단으로 스크롤
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     }
   };
 
