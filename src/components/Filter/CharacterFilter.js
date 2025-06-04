@@ -46,7 +46,7 @@ const CharacterFilter = ({ onFilterChange }) => {
 
   useEffect(() => {
     const activeCharacters = Object.keys(selectedCharacters).filter((char) => selectedCharacters[char]);
-    onFilterChange(activeCharacters);
+    onFilterChange('characters', activeCharacters);
   }, [selectedCharacters, onFilterChange]);
 
   return (
