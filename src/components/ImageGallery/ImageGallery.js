@@ -26,27 +26,19 @@ const ImageModal = ({ image, onClose }) => {
 
 const ImageGallery = ({ images }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [inputPage, setInputPage] = useState('');
+  const [currentImages, setCurrentImages] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [prevImagesLength, setPrevImagesLength] = useState(images.length);
+  const [inputPage, setInputPage] = useState('');
   const imagesPerPage = 12;
 
-  // 이미지 목록이 변경될 때만 페이지를 1로 초기화
   useEffect(() => {
-    if (prevImagesLength !== images.length) {
-      setCurrentPage(1);
-      setInputPage('');
-      setPrevImagesLength(images.length);
-    }
-  }, [images.length, prevImagesLength]);
+    // 현재 페이지의 이미지 계산
+    const indexOfLastImage = currentPage * imagesPerPage;
+    const indexOfFirstImage = indexOfLastImage - imagesPerPage;
+    const newCurrentImages = images.slice(indexOfFirstImage, indexOfLastImage);
+    setCurrentImages(newCurrentImages);
+  }, [currentPage, images]);
 
-  // 현재 페이지의 이미지 계산
-  const indexOfLastImage = currentPage * imagesPerPage;
-  const indexOfFirstImage = indexOfLastImage - imagesPerPage;
-  const currentImages = images.slice(indexOfFirstImage, indexOfLastImage);
-  const totalPages = Math.ceil(images.length / imagesPerPage);
-
-  // 페이지 변경 핸들러
   const handlePageChange = (pageNumber) => {
     if (pageNumber >= 1 && pageNumber <= totalPages) {
       setCurrentPage(pageNumber);
@@ -144,6 +136,8 @@ const ImageGallery = ({ images }) => {
 
     return pageNumbers;
   };
+
+  const totalPages = Math.ceil(images.length / imagesPerPage);
 
   if (images.length === 0) {
     return <div className="loading">이미지를 불러오는 중...</div>;
