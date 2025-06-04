@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import teamsData from "./filter-char.json"; // JSON 파일 가져오기
+import teamsData from "../../assets/filter-char.json"; // JSON 파일 가져오기
 import "./Filter.css";
 
 const CharacterFilter = ({ onFilterChange }) => {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import FilterSelectBox from './FilterSelectBox';
-import themeData from './filter-theme.json';
+import themeData from '../../assets/filter-theme.json';
 
 const ThemeFilter = () => {
   // 테마 필터
