@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ImageGallery.css';
 
 const ImageModal = ({ image, onClose }) => {
@@ -28,7 +28,17 @@ const ImageGallery = ({ images }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [inputPage, setInputPage] = useState('');
   const [selectedImage, setSelectedImage] = useState(null);
+  const [prevImagesLength, setPrevImagesLength] = useState(images.length);
   const imagesPerPage = 12;
+
+  // 이미지 목록이 변경될 때만 페이지를 1로 초기화
+  useEffect(() => {
+    if (prevImagesLength !== images.length) {
+      setCurrentPage(1);
+      setInputPage('');
+      setPrevImagesLength(images.length);
+    }
+  }, [images.length, prevImagesLength]);
 
   // 현재 페이지의 이미지 계산
   const indexOfLastImage = currentPage * imagesPerPage;

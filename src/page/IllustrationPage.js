@@ -55,7 +55,7 @@ const IllustrationPage = () => {
   return (
     <div className="illustration-page">
       <SidePanel onFilterChange={handleFilterChange} />
-      <ImageGallery images={filteredImages} />
+      <ImageGallery images={filteredImages} key={JSON.stringify(filters)} />
     </div>
   );
 };
