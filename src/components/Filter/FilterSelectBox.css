@@ -5,6 +5,7 @@
 
 .filter-select-label {
   font-weight: bold;
+  color: white;
 }
 
 /* react-select 커스텀 스타일 */
