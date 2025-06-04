@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './ImageGallery.css';
-import imageData from '../../assets/output.json';
 
 const ImageModal = ({ image, onClose }) => {
   if (!image) return null;
@@ -10,7 +9,7 @@ const ImageModal = ({ image, onClose }) => {
       <div className="modal-content" onClick={e => e.stopPropagation()}>
         <button className="modal-close" onClick={onClose}>×</button>
         <img 
-          src={image.fullPath} 
+          src={process.env.PUBLIC_URL + '/Closers/캐릭터 일러압/' + image.path.replace(/\\/g, '/')}
           alt={image.filename} 
           className="modal-image"
         />
@@ -25,22 +24,11 @@ const ImageModal = ({ image, onClose }) => {
   );
 };
 
-const ImageGallery = () => {
+const ImageGallery = ({ images }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [images, setImages] = useState([]);
   const [inputPage, setInputPage] = useState('');
   const [selectedImage, setSelectedImage] = useState(null);
   const imagesPerPage = 12;
-
-  useEffect(() => {
-    // output.json의 데이터를 이미지 배열로 변환
-    const formattedImages = imageData.map((item, index) => ({
-      ...item,
-      id: index,
-      fullPath: process.env.PUBLIC_URL + '/Closers/캐릭터 일러압/' + item.path.replace(/\\/g, '/')
-    }));
-    setImages(formattedImages);
-  }, []);
 
   // 현재 페이지의 이미지 계산
   const indexOfLastImage = currentPage * imagesPerPage;
@@ -156,12 +144,12 @@ const ImageGallery = () => {
       <div className="image-gallery">
         {currentImages.map((image) => (
           <div 
-            key={image.id} 
+            key={image.filename} 
             className="image-card"
             onClick={() => handleImageClick(image)}
           >
             <img 
-              src={image.fullPath}
+              src={process.env.PUBLIC_URL + '/Closers/캐릭터 일러압/' + image.path.replace(/\\/g, '/')}
               alt={image.filename}
               className="gallery-image"
             />
@@ -192,9 +180,9 @@ const ImageGallery = () => {
       </div>
 
       {selectedImage && (
-        <ImageModal 
-          image={selectedImage} 
-          onClose={handleCloseModal} 
+        <ImageModal
+          image={selectedImage}
+          onClose={handleCloseModal}
         />
       )}
     </div>

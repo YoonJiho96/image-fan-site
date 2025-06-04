@@ -2,12 +2,21 @@ import React, { useState, useEffect } from 'react';
 import FilterSelectBox from './FilterSelectBox';
 import themeData from '../../assets/filter-theme.json';
 
-const ThemeFilter = () => {
+const ThemeFilter = ({ onFilterChange }) => {
   // 테마 필터
   const [illust, setIllust] = useState([]);
   const [swim, setSwim] = useState([]);
   const [rare, setRare] = useState([]);
   const [unique, setUnique] = useState([]);
+
+  useEffect(() => {
+    onFilterChange('themes', {
+      illustration: illust.map(option => option.value),
+      swimsuit: swim.map(option => option.value),
+      rare: rare.map(option => option.value),
+      unique: unique.map(option => option.value)
+    });
+  }, [illust, swim, rare, unique, onFilterChange]);
 
   return (
     <div>

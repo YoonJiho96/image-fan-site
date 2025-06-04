@@ -13,7 +13,7 @@ const SidePanel = ({ onFilterChange }) => {
       
       <div className="side-panel-section">
         <h2 className="side-panel-title">테마</h2>
-        <ThemeFilter />
+        <ThemeFilter onFilterChange={onFilterChange} />
       </div>
     </div>
   );
