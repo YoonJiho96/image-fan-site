@@ -9,7 +9,7 @@ const ImageModal = ({ image, onClose }) => {
       <div className="modal-content" onClick={e => e.stopPropagation()}>
         <button className="modal-close" onClick={onClose}>×</button>
         <img 
-          src={process.env.PUBLIC_URL + '/Closers/캐릭터 일러압/' + image.path.replace(/\\/g, '/')}
+          src={'https://raw.githubusercontent.com/YoonJiho96/images/refs/heads/main/%EC%BA%90%EB%A6%AD%ED%84%B0%20%EC%9D%BC%EB%9F%AC%EC%95%95/' + image.path.replace(/\\/g, '/')}
           alt={image.filename} 
           className="modal-image"
         />
@@ -158,7 +158,7 @@ const ImageGallery = ({ images }) => {
             onClick={() => handleImageClick(image)}
           >
             <img 
-              src={process.env.PUBLIC_URL + '/Closers/캐릭터 일러압/' + image.path.replace(/\\/g, '/')}
+              src={'https://raw.githubusercontent.com/YoonJiho96/images/refs/heads/main/%EC%BA%90%EB%A6%AD%ED%84%B0%20%EC%9D%BC%EB%9F%AC%EC%95%95/' + image.path.replace(/\\/g, '/')}
               alt={image.filename}
               className="gallery-image"
             />
