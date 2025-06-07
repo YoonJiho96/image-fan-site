@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <nav className="navbar pd-lr">
       <div className="navbar-logo">
-        <Link to="/">Closers Images</Link>
+        <Link to="/" replace>Closers Images</Link>
       </div>
       <ul className="navbar-menu">
         <li><Link to="/gallery">캐릭터 일러스트</Link></li>
