@@ -2,9 +2,11 @@
   display: flex;
   flex-direction: column;
   background-color: #333333;
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   padding: 20px;
   gap: 20px;
+  box-sizing: border-box;
 }
 
 .side-panel-header {
@@ -40,6 +42,7 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
+  width: 100%;
 }
 
 .side-panel-title {

@@ -3,9 +3,9 @@
   flex-direction: column;
   gap: 15px;
   background-color: #333333;
-  width: 350px;
-  padding-left: 10px;
-  padding-bottom: 10px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .filter-header {
@@ -34,6 +34,7 @@
   display: flex;
   align-items: center;
   gap: 5px;
+  flex-wrap: wrap;
 }
 
 /* 공통 버튼 스타일 */
@@ -78,6 +79,7 @@
 .characters {
   display: flex;
   gap: 5px;
+  flex-wrap: wrap;
 }
 
 /* 툴팁 스타일 */
@@ -110,6 +112,8 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  padding-left: 10px;
+  padding: 10px;
   background-color: #333333;
+  width: 100%;
+  box-sizing: border-box;
 }

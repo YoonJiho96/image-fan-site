@@ -15,6 +15,17 @@ const IllustrationPage = () => {
       unique: []
     }
   });
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleFilterChange = (filterType, value) => {
     setFilters(prev => ({
@@ -54,7 +65,31 @@ const IllustrationPage = () => {
 
   return (
     <div className="illustration-page">
-      <SidePanel onFilterChange={handleFilterChange} />
+      {isMobile ? (
+        <>
+          <button 
+            className="filter-toggle-button"
+            onClick={() => setIsFilterOpen(true)}
+          >
+            필터
+          </button>
+          {isFilterOpen && (
+            <div className="filter-popup-overlay" onClick={() => setIsFilterOpen(false)}>
+              <div className="filter-popup" onClick={e => e.stopPropagation()}>
+                <button 
+                  className="filter-close-button"
+                  onClick={() => setIsFilterOpen(false)}
+                >
+                  ✕
+                </button>
+                <SidePanel onFilterChange={handleFilterChange} />
+              </div>
+            </div>
+          )}
+        </>
+      ) : (
+        <SidePanel onFilterChange={handleFilterChange} />
+      )}
       <ImageGallery images={filteredImages} key={JSON.stringify(filters)} />
     </div>
   );
